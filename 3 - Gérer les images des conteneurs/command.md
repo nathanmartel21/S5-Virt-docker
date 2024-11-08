@@ -26,4 +26,4 @@ docker pull httpd:2-alpine
   ```
 
   ![Remove des images docker](./capture/4.png)
-
+  ![Remove des images docker](./capture/5.png)
