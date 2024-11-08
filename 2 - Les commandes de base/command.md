@@ -1,9 +1,9 @@
-- Image officielle de CentOS : `centos`
-- Image officielle d’Alma Linux : `almalinux`
+- Image officielle de CentOS : `centos` [https://hub.docker.com/_/centos](https://hub.docker.com/_/centos)
+- Image officielle d’Alma Linux : `almalinux` [https://hub.docker.com/_/almalinux](https://hub.docker.com/_/almalinux)
 
 # Lancer un conteneur CentOS
 
-```bash
+```shell
 docker run -dit centos
 ```
 
