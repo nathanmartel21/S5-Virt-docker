@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Importer la clé GPG publique du dépôt :
 
 ```bash
