@@ -42,7 +42,7 @@ docker pull postgres:13.11
 docker images #ID différent car pas le même tag
 docker pull diouxx/glpi:latest
 docker pull diouxx/glpi:9.1.4
-docker images
+docker images #ID différent aussi (pas compris le but de l'exercice)
 docker login -u nathanmartel21 #ou docker login avec un navigateur
 docker rmi -f $(docker images -aq)
 ```
