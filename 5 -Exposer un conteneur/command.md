@@ -13,7 +13,7 @@ docker run --name mon_nginx -d -p 8080:80 nginx #expose le port 8080 sur le pc h
   - Protocole : TCP
   - IP : 127.0.0.1 or blank
   - Port hôte : 8080
-  - IP invité : @IP machine
+  - IP invité : @IP machine hôte
   - Port invité : 80
 
 ```bash
