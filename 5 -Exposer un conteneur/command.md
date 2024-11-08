@@ -8,6 +8,14 @@ docker run --name mon_nginx -d -p 8080:80 nginx #expose le port 8080 sur le pc h
 
 ![Curl conteneur localhost](./capture/6.png)
 
+**Redirection de port :** Dans VirtualBox, faire une redirection de port :
+  - Rule : AYW !
+  - Protocole : TCP
+  - IP : 127.0.0.1 or <blank>
+  - Port hôte : 8080
+  - IP invité : @IP machine
+  - Port invité : 80
+
 ```bash
 docker run --name autre_nginx -d -p 8080:80 -v ${PWD}/pagesweb:/usr/share/nginx/html:ro nginx #volume pour remplacer la page par défaut
 ```
