@@ -34,6 +34,53 @@ Lancement conteneur mariadb :
 docker run -dit --name database --network blog -e MYSQL_ROOT_PASSWORD=password123 -e MYSQL_DATABASE=wordpress --mount src=blog_db_data,dst=/var/lib/mysql mariadb
 ```
 
+On peut aussi faire ça : 
+
+```
+cd /var/lib/docker/volumes/blog_web_data/_data
+wget -c https://wordpress.org/wordpress-latest.tar.gz
+tar -xzf wordpress-latest.tar.gz
+rm -f wordpress-latest.tar.gz
+
+docker exec -it web bash
+chown -R www-data:www-data wordpress/
+```
+
+## Exercice 1 : 
+
+Dockerfile : 
+
+```
+FROM php:8.1-apache
+RUN apt update && docker-php-ext-install mysqli
+EXPOSE 80
+```
+```
+docker build -t nathanmartel21/php:mysqli .
+
+docker login -u nathanmartel21
+docker push nathanmartel21/php:mysqli
+
+docker run -dit --name web_php --network blog --mount src=blog_web_data,dst=/var/www/html nathanmartel21/php:mysqli #je me sers de l'ancien volume où il y a le wordpresss
+
+docker system prune
+```
+
+## Exercice 2 :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
