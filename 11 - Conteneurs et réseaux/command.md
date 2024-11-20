@@ -79,13 +79,13 @@ docker run -d --name db --network drupal -e POSTGRES_USER=drupal -e POSTGRES_PAS
 docker network inspect drupal
 ```
 
-![IMAGE 1](./capture/1.png")
+![IMAGE 1](./capture/1.png)
 
 ```
 docker pull drupal:7.98
 docker run -d --name drupal --network drupal -p 80:80 drupal:7.98
 ```
 
-![IMAGE 2](./capture/2.png")
+![IMAGE 2](./capture/2.png)
 
-![IMAGE 3](./capture/3.png")
+![IMAGE 3](./capture/3.png)
