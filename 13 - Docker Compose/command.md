@@ -48,9 +48,71 @@ volumes:
 
 ## Exercice : 
 
+```
+mkdir -v wordpress-exercice && cd wordpress-exercice
+```
+```
+#Fichier docker-compose.yaml
 
+networks:
+  blognet: # Définit le réseau personnalisé
+    driver: bridge
 
+volumes:
+  dbvol:
+  webvol:
 
+services:
+  db:
+    image: mariadb:latest
+    container_name: db
+    networks:
+      - blognet
+    volumes:
+      - dbvol:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "blog"
+      MYSQL_USER: "bloguser"
+      MYSQL_PASSWORD: "pass123"
+    restart: always
 
+  dbadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: dbadmin
+    hostname: dbadmin
+    networks:
+      - blognet
+    ports:
+      - "9090:80"
+    environment:
+      PMA_HOST: db
+    restart: always
 
+  web:
+    image: wordpress:latest
+    container_name: web
+    hostname: web
+    networks:
+      - blognet
+    ports:
+      - "9000:80"
+    volumes:
+      - webvol:/var/www/html/wp-content
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: bloguser
+      WORDPRESS_DB_NAME: blog
+      WORDPRESS_DB_PASSWORD: pass123
+    restart: always
+```
 
+```
+docker compose -f docker-compose.yaml up -d
+firefox http://localhost:9000
+docker ps --format "table {{.Names}}" # --> db, web et dbadmin
+docker network ls # --> wordpress-exercice_blognet
+docker volume ls # --> wordpress-exercice_dbvol et wordpress-exercice_webvol
+
+docker compose -f docker-compose.yaml down
+```
